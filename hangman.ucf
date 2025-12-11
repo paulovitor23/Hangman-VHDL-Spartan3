@@ -1,0 +1,55 @@
+#-------------------------------------------------------------------------------
+# Arquivo de Restrições de Usuário (UCF) para o Projeto Jogo da Forca
+# Placa Alvo: Xilinx Spartan-3A/3AN FPGA Starter Kit
+#
+# Este arquivo mapeia os sinais do VHDL para os pinos físicos da FPGA.
+#-------------------------------------------------------------------------------
+
+#============================#
+# Clock e Reset              #
+#============================#
+
+# Clock principal de 50 MHz da placa
+NET "CLK_50MHZ" LOC = "E12";
+
+# Botão para Reset (usando BTN_NORTH)
+# O PULLDOWN é necessário pois o botão conecta o pino a 3.3V quando pressionado.
+NET "BTN_RESET" LOC = "T14" | IOSTANDARD = LVCMOS33 | PULLDOWN;
+
+#============================#
+# Seleção de Palavra         #
+#============================#
+
+# Slide Switches (SW0 a SW3)
+NET "SW<0>" LOC = "V8"  | IOSTANDARD = LVCMOS33;
+NET "SW<1>" LOC = "U10" | IOSTANDARD = LVCMOS33;
+NET "SW<2>" LOC = "U8"  | IOSTANDARD = LVCMOS33;
+NET "SW<3>" LOC = "T9"  | IOSTANDARD = LVCMOS33;
+
+#============================#
+# Interface com Teclado PS/2 #
+#============================#
+
+# Conexões primárias do teclado PS/2
+# O manual especifica que o atributo PULLUP deve ser usado.
+NET "PS2_CLK1"  LOC = "W12" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "PS2_DATA1" LOC = "V11" | IOSTANDARD = LVCMOS33 | PULLUP;
+
+#============================#
+# Interface com Display LCD  #
+#============================#
+
+# Pinos de controle do LCD
+NET "LCD_E"  LOC = "AB4"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_RS" LOC = "Y14"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_RW" LOC = "W13"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+
+# Pinos de dados do LCD (barramento de 8 bits)
+NET "LCD_DB<7>" LOC = "Y15"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_DB<6>" LOC = "AB16" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_DB<5>" LOC = "Y16"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_DB<4>" LOC = "AA12" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_DB<3>" LOC = "AB12" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_DB<2>" LOC = "AB17" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_DB<1>" LOC = "AB18" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "LCD_DB<0>" LOC = "Y13"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
